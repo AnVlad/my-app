@@ -1,0 +1,29 @@
+.dark-body {
+  background-color: #262626d4;
+}
+
+.dark-header {
+  color: #f0f0f0;
+}
+
+.dark-dark-question {
+  color: #f0f0f0;
+}
+
+.dark-showAnswer {
+  background-color: #818384;
+  color: #d7dadc;
+  border-style: solid;
+}
+
+.dark-toShow {
+  color: #d7dadc;
+}
+
+.dark-next {
+  background-color: #26262600;
+  color: #d7dadc;
+}
+
+/* .dark-showTheModal {
+} */

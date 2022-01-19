@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from 'react';
+import './index.css';
+import { AddNewWord, English } from './func/addNewWordInWocab';
+import './darkTheme.css';
 
-function App() {
+const Header = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+      <div className="header">English Words</div>
+      <hr></hr>
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <div className="wrap">
+      <Header />
+      <AddNewWord />
+      <English />
     </div>
   );
-}
+};
 
 export default App;
