@@ -24,9 +24,9 @@ function EnglishWordsChoose(initVocab) {
               key={eng[chooseWord]}
               message={eng[chooseWord]}></Item>
           </ol>
-          <button className="next" tabIndex={1} onClick={randomChoice}>
+          <div className="next btn" tabIndex={1} onClick={randomChoice}>
             {'>'}
-          </button>
+          </div>
         </>
       ) : (
         <h1>nothing here</h1>

@@ -10,7 +10,9 @@ function RenderVocabWords({ id, eng, translate, num, initVocab, setInitVocab }) 
       <span className="vocab-id">{num + 1}</span>
       <span className="vocab-eng">{eng}</span>
       <span className="vocab-translate">{translate}</span>
-      <button onClick={deleteWord}>X</button>
+      <div className="btn delete" onClick={deleteWord}>
+        x
+      </div>
     </li>
   );
 }

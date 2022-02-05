@@ -17,9 +17,9 @@ function Item({ message, changeShowedWord }) {
   return (
     <div>
       <h1 className="question">{words.eng}</h1>
-      <button className="toShow showAnswer" tabIndex={2} hidden={show} onClick={showAnswer}>
+      <div className="toShow showAnswer" tabIndex={2} hidden={show} onClick={showAnswer}>
         SHOW
-      </button>
+      </div>
       <p className="toShow answer" hidden={!show}>
         {words.translate}
       </p>

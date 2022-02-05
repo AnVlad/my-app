@@ -1,5 +1,5 @@
 import React from 'react';
-import English from '../func/EnglishWordsChoose';
+import English from '../func/MainPageFunc/EnglishWordsChoose';
 
 function Main({ initVocab }) {
   return (

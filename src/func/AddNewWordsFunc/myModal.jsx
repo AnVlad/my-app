@@ -1,5 +1,5 @@
 import React from 'react';
-import MyForm from './myForm';
+import MyForm from '../Custom/myForm';
 
 const MyModal = ({ closeModal, submitNewWord }) => {
   return (

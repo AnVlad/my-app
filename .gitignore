@@ -2,6 +2,7 @@
 
 formik.js
 db.json
+vocab.js
 
 # dependencies
 /node_modules

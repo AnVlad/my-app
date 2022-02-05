@@ -1,9 +1,22 @@
+@import './variables.scss';
+
+*,
+::after ::before {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(#{--background-default});
+  color: var(#{--textColor-default});
+}
+
+button {
+  color: var(#{--textColor-default});
 }
 
 body::-webkit-scrollbar {
@@ -49,12 +62,14 @@ hr {
 }
 
 .showAnswer {
-  background-color: white;
   width: 200px;
   height: 100px;
   font-size: 30px;
   border-radius: 20px;
+  border-style: solid;
   cursor: pointer;
+  margin: 0 auto;
+  line-height: 100px;
 }
 
 .answer {
@@ -67,23 +82,24 @@ hr {
 }
 
 .next {
-  margin-top: 100px;
+  margin-top: 80px;
   height: 200px;
   width: 420px;
-  background-color: white;
+  background-color: var(#{--buttonToNext-default});
   border-radius: 40px;
   cursor: pointer;
   border-style: none;
   font-size: 100px;
-}
+  line-height: 100px;
 
-.next:hover {
-  font-size: 120px;
+  &:hover {
+    font-size: 120px;
+    line-height: 140px;
+  }
 }
 
 .background-modalWindow {
   margin: 0;
-  /* background-color: rgba(0, 0, 0, 0.479); */
   position: absolute;
 }
 
@@ -102,11 +118,6 @@ hr {
   transform: none;
   max-width: 500px;
   margin: 1.75rem auto;
-}
-
-*,
-::after ::before {
-  box-sizing: border-box;
 }
 
 .modal-content {
@@ -192,17 +203,17 @@ input {
   display: flex;
   justify-content: center;
   font-size: 24px;
+
+  span {
+    font-weight: 600;
+    padding-top: 20px;
+    border-bottom: 1px solid rgba(170, 170, 170, 0.548);
+  }
 }
 
-.vocab-inner span {
-  font-weight: 600;
-  padding-top: 20px;
-  border-bottom: 1px solid rgba(170, 170, 170, 0.548);
-}
-
-.vocab-inner button {
+button {
   width: 50px;
-  background-color: white;
+  background-color: var(#{--background-default});
   border: none;
   border-bottom: 1px solid rgba(170, 170, 170, 0.548);
   cursor: pointer;
@@ -216,21 +227,15 @@ input {
   margin-bottom: 30px;
 
   font-size: 20px;
-}
 
-.links:hover {
-  background-color: rgba(249, 249, 249, 0.555);
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #6c757d;
-  border: 1px solid transparent;
-  margin: 30px;
+  &:hover {
+    background-color: rgba(249, 249, 249, 0.555);
+  }
 }
 
 .btn {
   text-transform: uppercase;
+  color: var(#{--textColor-default});
   cursor: pointer;
   display: inline-block;
   font-weight: 400;
@@ -244,6 +249,30 @@ input {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.btn-primary:hover {
-  opacity: 0.95;
+.btn-primary {
+  color: #fff;
+  background-color: #6c757d;
+  border: 1px solid transparent;
+  margin: 30px;
+
+  &:hover {
+    opacity: 0.95;
+  }
+}
+
+.change-theme {
+  background-color: var(#{--themeChanger-default});
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.delete {
+  width: 50px;
+  border: none;
+  border-bottom: 1px solid rgba(170, 170, 170, 0.548);
+  cursor: pointer;
+  border-radius: 0;
+  font-size: medium;
 }
