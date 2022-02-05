@@ -1,9 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeWord } from '../../toolkitRedux/reduxSlice';
 
 function RenderVocabWords({ id, eng, translate, num, initVocab, setInitVocab }) {
+  const dispatch = useDispatch();
+
   const deleteWord = () => {
-    setInitVocab(initVocab.filter((elem) => elem.id !== id));
+    // console.log(id);
+    dispatch(removeWord(id));
   };
+
+  // const deleteWord = () => {
+  //   setInitVocab(initVocab.filter((elem) => elem.id !== id));
+  // };
 
   return (
     <li className="vocab-inner">

@@ -1,8 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import RenderVocabWords from '../func/VocabPageFunc/RenderVocabWords';
+import { setWords } from '../toolkitRedux/reduxSlice';
 
-function Vocab({ initVocab, setInitVocab }) {
+function Vocab() {
+  const dispatch = useDispatch();
+
+  const setInitVocab = (data) => {
+    dispatch(setWords(data));
+  };
+
+  const initVocab = useSelector((state) => state.vocabSlice.vocab);
+
+  ////        sort        /////
   let clone = [...initVocab];
+
   const sort = (by) => {
     if (by === 'by id') {
       setInitVocab(clone.sort((a, b) => (a.id > b.id ? 1 : -1)));
@@ -12,6 +24,7 @@ function Vocab({ initVocab, setInitVocab }) {
       setInitVocab(clone.sort((a, b) => (a.elem > b.elem ? 1 : -1)));
     }
   };
+  //////////////////////////////
 
   return (
     <>

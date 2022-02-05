@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Item from './Item';
 
-function EnglishWordsChoose(initVocab) {
+function EnglishWordsChoose() {
   const random = (min = 0, max = eng.length) => Math.floor(Math.random() * (max - min) + min);
   const randomChoice = () => setChooseWord(random());
+
+  const initVocab = useSelector((state) => state.vocabSlice.vocab);
 
   const [eng, setEng] = useState('');
   const [chooseWord, setChooseWord] = useState(random());

@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './styles/index.scss';
-// import './darkTheme.css';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
@@ -10,6 +9,9 @@ import Main from './pages/Main';
 import Vocab from './pages/Vocab';
 import RoutesTo from './func/Routes/RoutesTo';
 import { ThemeContext } from './func/Context/ThemeContext';
+
+import { addWord, removeWord, setWords } from './toolkitRedux/reduxSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Header = () => {
   return (
@@ -21,7 +23,11 @@ const Header = () => {
 };
 
 const App = () => {
-  const [initVocab, setInitVocab] = useState('');
+  const dispatch = useDispatch();
+
+  const setNewVocab = (data) => {
+    dispatch(setWords(data));
+  };
 
   const theme = useContext(ThemeContext);
 
@@ -31,7 +37,7 @@ const App = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:3001/englishWords`).then(({ data }) => {
-      setInitVocab(data);
+      setNewVocab(data);
     });
   }, []);
 
@@ -42,15 +48,12 @@ const App = () => {
           <Header />
           <div className="routes">
             <RoutesTo />
-            <AddNewWord initVocab={initVocab} setInitVocab={setInitVocab} />
+            <AddNewWord />
             <span className="change-theme" onClick={toChangeTheme}></span>
           </div>
           <Routes>
-            <Route path="/" element={<Main initVocab={initVocab} />} />
-            <Route
-              path="vocab"
-              element={<Vocab initVocab={initVocab} setInitVocab={setInitVocab} />}
-            />
+            <Route path="/" element={<Main />} />
+            <Route path="vocab" element={<Vocab />} />
           </Routes>
         </div>
       </BrowserRouter>

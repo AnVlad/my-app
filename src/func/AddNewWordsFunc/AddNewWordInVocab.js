@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addWord } from '../../toolkitRedux/reduxSlice';
 import MyModal from './myModal';
 
-const AddNewWord = ({ initVocab, setInitVocab }) => {
+const AddNewWord = () => {
+  const dispatch = useDispatch();
+
+  const addNewWord = (data) => {
+    dispatch(addWord(data));
+  };
+
   const [showModal, setShowModal] = useState(false);
 
   const submitNewWord = (a) => {
-    setInitVocab([
-      ...initVocab,
-      {
-        id: initVocab.length + 1,
-        eng: a[0],
-        translate: a[1],
-      },
-    ]);
+    addNewWord({ eng: a[0], translate: a[1] });
 
     setShowModal(!showModal);
   };
