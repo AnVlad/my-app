@@ -13,7 +13,7 @@ function EnglishWordsChoose() {
   const [chooseWord, setChooseWord] = useState(random());
 
   useEffect(() => {
-    setEng(initVocab.state);
+    setEng(initVocab);
     randomChoice();
   }, [initVocab]);
 
