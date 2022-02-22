@@ -1,18 +1,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeWord } from '../../toolkitRedux/reduxSlice';
+import axiosEngWords from '../../axios/axiosGetWordsList';
 
 function RenderVocabWords({ id, eng, translate, num, initVocab, setInitVocab }) {
   const dispatch = useDispatch();
 
   const deleteWord = () => {
-    // console.log(id);
     dispatch(removeWord(id));
-  };
 
-  // const deleteWord = () => {
-  //   setInitVocab(initVocab.filter((elem) => elem.id !== id));
-  // };
+    axiosEngWords.del(id);
+  };
 
   return (
     <li className="vocab-inner">

@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addWord } from '../../toolkitRedux/reduxSlice';
 import MyModal from './myModal';
+import axiosEngWords from '../../axios/axiosGetWordsList';
 
 const AddNewWord = () => {
   const dispatch = useDispatch();
 
-  const addNewWord = (data) => {
-    dispatch(addWord(data));
+  const addNewWord = (engObj) => {
+    dispatch(addWord(engObj));
+    axiosEngWords.create(engObj);
   };
 
   const [showModal, setShowModal] = useState(false);
 
-  const submitNewWord = (a) => {
-    addNewWord({ eng: a[0], translate: a[1] });
+  const submitNewWord = (engObj) => {
+    addNewWord({ eng: engObj[0], translate: engObj[1] });
 
     setShowModal(!showModal);
   };

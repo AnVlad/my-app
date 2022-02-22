@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import './styles/index.scss';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import axios from 'axios';
 
 import { AddNewWord } from './func/AddNewWordsFunc/AddNewWordInVocab';
 import Main from './pages/Main';
@@ -10,24 +9,22 @@ import Vocab from './pages/Vocab';
 import RoutesTo from './func/Routes/RoutesTo';
 import { ThemeContext } from './func/Context/ThemeContext';
 
-import { addWord, removeWord, setWords } from './toolkitRedux/reduxSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { setWords } from './toolkitRedux/reduxSlice';
+import { useDispatch } from 'react-redux';
+
+import getAnecdotes from './axios/axiosGetWordsList';
 
 const Header = () => {
   return (
     <>
       <div className="header">English Words</div>
-      <hr></hr>
+      <hr />
     </>
   );
 };
 
 const App = () => {
   const dispatch = useDispatch();
-
-  const setNewVocab = (data) => {
-    dispatch(setWords(data));
-  };
 
   const theme = useContext(ThemeContext);
 
@@ -36,9 +33,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/englishWords`).then(({ data }) => {
-      setNewVocab(data);
-    });
+    getAnecdotes.getAll().then((vocabList) => dispatch(setWords(vocabList)));
   }, []);
 
   return (
